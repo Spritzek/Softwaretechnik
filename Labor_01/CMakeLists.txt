@@ -3,4 +3,7 @@ project(Labor_01)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Labor_01 main.cpp)
+add_executable(Labor_01 main.cpp
+        defs.h
+        person.cpp
+        person.h)
