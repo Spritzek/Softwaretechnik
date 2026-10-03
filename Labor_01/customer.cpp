@@ -1,4 +1,6 @@
 
+// Implementierung der Customer-Klasse
+
 #include "customer.h"
 
 void Customer::setAddress(string street, uint number, string city, string postcode, string country) {
