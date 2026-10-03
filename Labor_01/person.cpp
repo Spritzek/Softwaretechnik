@@ -1,27 +1,27 @@
 
 #include "person.h"
 
-void person::setName(string name) {
+void Person::setName(string name) {
     _name = name;
 }
 
-string person::name() {
+string Person::name() {
     return _name;
 }
 
-void person::setSurname(string surname) {
+void Person::setSurname(string surname) {
     _surname = surname;
 }
 
-string person::surname() {
+string Person::surname() {
     return _surname;
 }
 
-int person::setDob(Date dob) {
+int Person::setDob(unsigned int day, MONTH month, int year) {
     return 1;
     return 0;
 }
 
-Date person::dob() {
+Date Person::dob() {
     return _dob;
 }

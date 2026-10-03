@@ -4,7 +4,7 @@
 using namespace std;
 #pragma once
 
-class person {
+class Person {
 private:
     string _name;
     string _surname;
@@ -14,6 +14,6 @@ public:
     string name();
     void setSurname(string surname);
     string surname();
-    int setDob(Date dob);
+    int setDob(unsigned int day, MONTH month, int year);
     Date dob();
 };

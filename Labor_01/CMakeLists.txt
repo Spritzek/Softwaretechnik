@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Labor_01 main.cpp
         defs.h
         person.cpp
-        person.h)
+        person.h
+        customer.cpp
+        customer.h)

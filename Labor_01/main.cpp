@@ -16,7 +16,7 @@ int main()
     // set person's details
     aPerson.setName("Joe");
     aPerson.setSurname("Bloggs");
-    error = aPerson.setDob(17,JUL, 1988);
+    error = aPerson.setDob(17, JUL, 1988);
     // check if day matches month
     if( error)
     {
