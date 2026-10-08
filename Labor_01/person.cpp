@@ -7,7 +7,7 @@ void Person::setName(string name) {
     _name = name;
 }
 
-string Person::name() {
+string Person::name() const {
     return _name;
 }
 
@@ -15,7 +15,7 @@ void Person::setSurname(string surname) {
     _surname = surname;
 }
 
-string Person::surname() {
+string Person::surname() const {
     return _surname;
 }
 
@@ -54,6 +54,6 @@ int Person::setDob(unsigned int day, MONTH month, int year) {
     return 1;
 }
 
-Date Person::dob() {
+Date Person::dob() const {
     return _dob;
 }

@@ -10,7 +10,18 @@ using namespace std;
 
 // prototypes
 // wechseln zwischen Person/Customer für jeweilge Ausgabe
-void print(Person);
+// Vorher: void print(Person);
+//  - Übergabe per Wert kopiert das Objekt. Wird ein Customer übergeben, wird
+//    nur der Person-Anteil kopiert ("Object Slicing") -> Adresse geht verloren
+//    und ein dynamic_cast auf Customer wäre unmöglich.
+// Jetzt: void print(const Person& p);
+//  - Referenz (&): keine Kopie, das Original-Objekt bleibt erhalten, daher
+//    kann per dynamic_cast geprüft werden, ob es eigentlich ein Customer ist.
+//  - const: print() darf das Objekt nur lesen, nicht verändern. Deshalb
+//    müssen alle in print() aufgerufenen Getter als const deklariert sein.
+//  - Person als Parametertyp: Customer erbt von Person, also kann eine
+//    Funktion sowohl Person- als auch Customer-Objekte entgegennehmen.
+void print(const Person& p);
 
 int main()
 {
@@ -47,6 +58,27 @@ int main()
     return 0;
 }
 
+void print(const Person& p)
+{
+    // Teil, der für Person und Customer gilt
+    cout << "Name: " << p.name();
+    cout << " " << p.surname();
+    cout << " DoB: " << p.dob().day;
+    cout << "." << p.dob().month;
+    cout << "." << p.dob().year << endl;
+
+    // Teil nur für Customer
+    if (const Customer* c = dynamic_cast<const Customer*>(&p))
+    {
+        cout << "Address: " << c->address().street << " ";
+        cout << c->address().number << ", ";
+        cout << c->address().postcode << " ";
+        cout << c->address().city << ", ";
+        cout << c->address().country << endl;
+    }
+}
+
+/*
 // Funktion zur Ausgabe von Personendetails
 void print(Person aPerson)
 {
@@ -73,3 +105,4 @@ void print(Customer aPerson) {
     cout << aPerson.address().city << ", ";
     cout << aPerson.address().country << endl;
 }
+*/
