@@ -27,6 +27,7 @@ int main()
 {
     // local variables
     Customer aPerson;
+    Person bPerson;
     int error;
 
     // set person's details
@@ -41,6 +42,10 @@ int main()
         "Deutschland"
     );
 
+    //bPerson.setName("John");
+    //bPerson.setSurname("Doe");
+    //bPerson.setDob(17, JUL, 1988);
+
     // check if day matches month
     if( error)
     {
@@ -53,6 +58,7 @@ int main()
     {
         // everything is fine, carry on ...
         print(aPerson);
+        //print(bPerson);
     }
     //c++ typischer Return Value für ein sauber ausgeführtes Programm
     return 0;
