@@ -46,11 +46,10 @@ int Person::setDob(unsigned int day, MONTH month, int year) {
             return ERROR;
     }
 
-    _dob.day = day;
-    _dob.month = month;
-    _dob.year = year;
+    _dob.day    = day;
+    _dob.month  = month;
+    _dob.year   = year;
     return OK;
-
 }
 
 Date Person::dob() const {
