@@ -78,7 +78,11 @@ void print(const Person& p)
     // &p beschreibt die Adresse des Objekts p
     // dynamic_cast: Laufzeitprüfung ob Objekt bei Adresse &p ein Customer
     // oder eine davon abgeleitete Klasse vorliegt
-    // wenn
+    // wenn der Cast gelingt (es liegt ein Customer Objekt vor), dann
+    // wird c ein Pointer zugewiesen zum Objekt.
+    // das wird von if als True interpretiert.
+    // Andernfalls wird c ein NULL-Pointer zugewiesen.
+    // Das wird von if als False interpretiert.
     {
         cout << "Address: " << c->address().street << " ";
         cout << c->address().number << ", ";
