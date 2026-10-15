@@ -27,7 +27,7 @@ int main()
 {
     // local variables
     Customer aPerson;
-    Person bPerson;
+    //Person bPerson;
     int error;
 
     // set person's details
@@ -75,6 +75,10 @@ void print(const Person& p)
 
     // Teil nur für Customer
     if (const Customer* c = dynamic_cast<const Customer*>(&p))
+    // &p beschreibt die Adresse des Objekts p
+    // dynamic_cast: Laufzeitprüfung ob Objekt bei Adresse &p ein Customer
+    // oder eine davon abgeleitete Klasse vorliegt
+    // wenn
     {
         cout << "Address: " << c->address().street << " ";
         cout << c->address().number << ", ";
