@@ -3,11 +3,13 @@
 #include <string>
 using namespace std;
 
-#define OK 0
-#define ERROR 1
+#define OK      0
+#define ERROR   1
 
 enum MONTH {
-    JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+    JAN, FEB, MAR, APR,
+    MAY, JUN, JUL, AUG,
+    SEP, OCT, NOV, DEC
 };
 
 struct Date

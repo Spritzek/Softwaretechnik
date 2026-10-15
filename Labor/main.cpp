@@ -10,16 +10,15 @@ using namespace std;
 
 // prototypes
 void print(const Person& p);
-// const: print() darf nur lesen. D.h. alles Getter müssen als
-// const deklariert werden damit print() sicherstellen kann,
-// dass das zu lesene Objekt auch unverändert bleibt.
+// const: print() darf Objekt nur lesen. D.h. die Getter
+// müssen als Const deklariert sein, um sicherzustellen,
+// dass sich die Werte beim Lesen nicht ändern.
 //
-// Person: Person als Parameter da ein Customer auch die Parameter
-// einer Person hat. Das bedeutet, dass ein Customer genau so
-// verwendet werden kann wie eine Person.
+// Person: Parametertyp Person, da Customer von Person
+// erbt und sowieso die selben Parameter wie Person besitzt.
 //
-// &: es wird nur eine Referenz übergeben, sodass dynamic_cast
-// auch prüfen kann ob ein Customer vorliegt.
+// &: Der Funktion wird nur eine Referenz übergeben. Das
+// stellt die Funktion von dynamic_cast sicher.
 
 int main()
 {
@@ -57,7 +56,6 @@ int main()
     return 0;
 }
 
-// Ausgabe der Personen-/Customer-Daten
 void print(const Person& p)
 {
     // Teil, der für Person und Customer gilt
