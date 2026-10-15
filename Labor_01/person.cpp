@@ -20,38 +20,37 @@ string Person::surname() const {
 }
 
 int Person::setDob(unsigned int day, MONTH month, int year) {
+    // Month
+    if (month < JAN or month > DEC)
+        return ERROR;
 
-    // Logik zur Prüfung ob ein Schaltjahr vorliegt
-    // Wert 1804 aus dem Internet
-    bool schaltJahr= false;
-    if (year >= 1804 && (year - 1804)%4 == 0) {
-        schaltJahr = true;
+    // Days
+    if (day < 1 or day > 31)
+        return ERROR;
+
+    // Months, which end in 30 Days
+    if (day == 31 and ( month == APR or month == JUN or month == SEP or  month == NOV))
+        return ERROR;
+
+    //Conditions for February
+    if (month == FEB)
+    {
+        // Function for Leap-year
+        bool leapYear = (year % 400 == 0) ||
+                        (year % 4 == 0 && year != 0);
+
+        if (day > 29)
+            return ERROR;
+
+        if (day == 29 && !leapYear)
+            return ERROR;
     }
 
-    // Wenn Jahr >= 1804 und Tag des Monats valide:
-    // return 0 und Werte setzen
-    if (year >= 1804 && (
-        (month == 0 and day <= 31) ||
-        (month == 1 and day <= 27) ||
-        (month == 1 and day == 28 and schaltJahr == true) ||
-        (month == 2 and day <= 31) ||
-        (month == 3 and day <= 30) ||
-        (month == 4 and day <= 31) ||
-        (month == 5 and day <= 30) ||
-        (month == 6 and day <= 31) ||
-        (month == 7 and day <= 31) ||
-        (month == 8 and day <= 30) ||
-        (month == 9 and day <= 31) ||
-        (month == 10 and day <= 30) ||
-        (month == 11 and day <= 31)
-    )) {
-        _dob.day = day;
-        _dob.month = month;
-        _dob.year = year;
-        return 0;
-    }
-    // Andernfalls return 1
-    return 1;
+    _dob.day = day;
+    _dob.month = month;
+    _dob.year = year;
+    return OK;
+
 }
 
 Date Person::dob() const {
