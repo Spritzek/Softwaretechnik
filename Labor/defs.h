@@ -5,6 +5,7 @@ using namespace std;
 
 #define OK      0
 #define ERROR   1
+#define ERRORMSG "ERROR"
 
 enum MONTH {
     JAN, FEB, MAR, APR,

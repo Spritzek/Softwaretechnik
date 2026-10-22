@@ -23,16 +23,16 @@ string Person::surname() const {
 void Person::setDob(unsigned int day, MONTH month, int year) {
     // Month
     if (month < JAN or month > DEC) {
-        throw ERROR;
+        throw invalid_argument(ERRORMSG);
     }
 
     // Days
     if (day < 1 or day > 31)
-        throw ERROR;
+        throw invalid_argument(ERRORMSG);
 
     // Months, which end in 30 Days
     if (day == 31 and ( month == APR or month == JUN or month == SEP or  month == NOV))
-        throw ERROR;
+        throw invalid_argument(ERRORMSG);
 
     //Conditions for February
     if (month == FEB)
@@ -42,10 +42,10 @@ void Person::setDob(unsigned int day, MONTH month, int year) {
                         (year % 4 == 0 && year != 0);
 
         if (day > 29)
-            throw ERROR;
+            throw invalid_argument(ERRORMSG);
 
         if (day == 29 && !leapYear)
-            throw ERROR;
+            throw invalid_argument(ERRORMSG);
     }
 
     _dob.day    = day;

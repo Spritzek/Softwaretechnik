@@ -27,19 +27,23 @@ int main()
 {
     // local variables
     Customer aPerson;
-    int error;
 
     // set person's details
     aPerson.setName("Joe");
     aPerson.setSurname("Bloggs");
 
-    // Aufgabe 1: da die Methode keinen Rückgabewert mehr hat,
-    // funktioniert diese Zuweisung nicht mehr.
-    error = aPerson.setDob(
-        17,     // day
-        JUL,    // month
-        1988    // year
-    );
+    try {
+        aPerson.setDob(
+            40,     // day
+            JUL,    // month
+            1988    // year
+        );
+    } catch (exception& ex) {
+        cout<<ex.what()<<endl;
+        cout<<"no such day"<<endl;
+        return 1;
+    }
+
     aPerson.setAddress(
         "Hauptstraße",      // street
         21,                 // number
@@ -48,17 +52,7 @@ int main()
         "Deutschland"       // country
     );
 
-    // check if dob is valid
-    if( error)
-    {
-        cout<<"no such day"<<endl;
-        return 1;
-    }
-    else
-    {
-        print(aPerson);
-    }
-    return 0;
+    print(aPerson);
 }
 
 void print(const Person& p)
