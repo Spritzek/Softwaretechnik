@@ -1,6 +1,7 @@
-# Softwaretechnik<br/>André Mastmeyer
-___
+# Softwaretechnik - André Mastmeyer
 
-## Labor_01
-Einstieg in OOP und Vererbungen.
+### Labor 1
+Einstieg in OOP und Vererbungen
 
+### Labor 2
+Error-Handling mit exceptions und try-catch-Blöcken
