@@ -20,11 +20,14 @@ string Person::surname() const {
     return _surname;
 }
 
+/*
+ * Anstelle von return Values werden invalid_argument exceptions erhoben.
+ * Daher wurde der Return-Type der Methode auf void geändert.
+ */
 void Person::setDob(unsigned int day, MONTH month, int year) {
     // Month
-    if (month < JAN or month > DEC) {
+    if (month < JAN or month > DEC)
         throw invalid_argument(ERRORMSG);
-    }
 
     // Days
     if (day < 1 or day > 31)

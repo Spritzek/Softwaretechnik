@@ -32,6 +32,12 @@ int main()
     aPerson.setName("Joe");
     aPerson.setSurname("Bloggs");
 
+    /*
+     * Try-Catch-Block:
+     * Sollte ein invalides Datum vorliegen erhebt die methode
+     * setDob eine Exception. Passiert das, wird der code im
+     * catch-Block ausgeführt und das Programm beendet.
+     */
     try {
         aPerson.setDob(
             40,     // day

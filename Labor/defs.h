@@ -5,6 +5,7 @@ using namespace std;
 
 #define OK      0
 #define ERROR   1
+// Fehlermeldung, welche die Exception zurückgibt.
 #define ERRORMSG "ERROR"
 
 enum MONTH {
