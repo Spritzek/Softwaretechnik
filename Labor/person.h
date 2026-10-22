@@ -41,7 +41,7 @@ public:
     string surname() const;
 
     // Funktion zum Setzen und Prüfen des Geburtsdatums
-    int setDob(unsigned int day, MONTH month, int year);
+    void setDob(unsigned int day, MONTH month, int year);
 
     // Funktion zum Abrufen des Geburtsdatums
     Date dob() const;

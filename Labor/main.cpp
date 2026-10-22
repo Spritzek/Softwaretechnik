@@ -6,6 +6,7 @@
 // local includes
 #include "customer.h"
 #include "defs.h"
+//#include "lib.h"
 using namespace std;
 
 // prototypes
@@ -31,6 +32,9 @@ int main()
     // set person's details
     aPerson.setName("Joe");
     aPerson.setSurname("Bloggs");
+
+    // Aufgabe 1: da die Methode keinen Rückgabewert mehr hat,
+    // funktioniert diese Zuweisung nicht mehr.
     error = aPerson.setDob(
         17,     // day
         JUL,    // month

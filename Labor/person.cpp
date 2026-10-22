@@ -2,6 +2,7 @@
 // Implementierung der Person-Klasse
 
 #include "person.h"
+#define TEST "ERROR"
 
 void Person::setName(string name) {
     _name = name;
@@ -19,18 +20,19 @@ string Person::surname() const {
     return _surname;
 }
 
-int Person::setDob(unsigned int day, MONTH month, int year) {
+void Person::setDob(unsigned int day, MONTH month, int year) {
     // Month
-    if (month < JAN or month > DEC)
-        return ERROR;
+    if (month < JAN or month > DEC) {
+        throw ERROR;
+    }
 
     // Days
     if (day < 1 or day > 31)
-        return ERROR;
+        throw ERROR;
 
     // Months, which end in 30 Days
     if (day == 31 and ( month == APR or month == JUN or month == SEP or  month == NOV))
-        return ERROR;
+        throw ERROR;
 
     //Conditions for February
     if (month == FEB)
@@ -40,16 +42,15 @@ int Person::setDob(unsigned int day, MONTH month, int year) {
                         (year % 4 == 0 && year != 0);
 
         if (day > 29)
-            return ERROR;
+            throw ERROR;
 
         if (day == 29 && !leapYear)
-            return ERROR;
+            throw ERROR;
     }
 
     _dob.day    = day;
     _dob.month  = month;
     _dob.year   = year;
-    return OK;
 }
 
 Date Person::dob() const {
