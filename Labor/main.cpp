@@ -28,10 +28,6 @@ int main()
     // local variables
     Customer aPerson;
 
-    // set person's details
-    aPerson.setName("Joe");
-    aPerson.setSurname("Bloggs");
-
     /*
      * Try-Catch-Block:
      * Sollte ein invalides Datum vorliegen erhebt die methode
@@ -39,17 +35,28 @@ int main()
      * catch-Block ausgeführt und das Programm beendet.
      */
     try {
+
         aPerson.setDob(
-            40,     // day
+            17,     // day
             JUL,    // month
             1988    // year
         );
+
     } catch (exception& ex) {
+
         cout<<ex.what()<<endl;
         cout<<"no such day"<<endl;
         return 1;
+
     }
 
+    // set person's details
+    aPerson.setName(
+        "Joe"               // name
+    );
+    aPerson.setSurname(
+        "Bloggs"            // surname
+    );
     aPerson.setAddress(
         "Hauptstraße",      // street
         21,                 // number
@@ -59,6 +66,7 @@ int main()
     );
 
     print(aPerson);
+    return 0;
 }
 
 void print(const Person& p)
