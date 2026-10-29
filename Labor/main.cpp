@@ -35,19 +35,31 @@ int main()
      * catch-Block ausgeführt und das Programm beendet.
      */
     try {
-
         aPerson.setDob(
             17,     // day
             JUL,    // month
             1988    // year
         );
 
-    } catch (exception& ex) {
+        aPerson.setAddress(
+            "Hauptstraße",      // street
+            21,                 // number
+            "45220",            // postcode
+            "Klein Bollersen",  // city
+            "Deutschland"       // country
+        );
+    }
 
+    catch (length_error& le) {
+        cout<<le.what()<<endl;
+        cout<<"postcode has wrong number of digits"<<endl;
+        return 1;
+    }
+
+    catch (exception& ex) {
         cout<<ex.what()<<endl;
         cout<<"no such day"<<endl;
         return 1;
-
     }
 
     // set person's details
@@ -56,13 +68,6 @@ int main()
     );
     aPerson.setSurname(
         "Bloggs"            // surname
-    );
-    aPerson.setAddress(
-        "Hauptstraße",      // street
-        21,                 // number
-        "45220",            // postcode
-        "Klein Bollersen",  // city
-        "Deutschland"       // country
     );
 
     print(aPerson);

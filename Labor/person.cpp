@@ -2,7 +2,9 @@
 // Implementierung der Person-Klasse
 
 #include "person.h"
+#include <stdexcept>
 #define TEST "ERROR"
+using namespace std;
 
 void Person::setName(string name) {
     _name = name;
