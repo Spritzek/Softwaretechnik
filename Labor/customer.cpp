@@ -6,6 +6,15 @@
 
 #include "exceptions.h"
 
+void Customer::init() {
+    Person::init();
+    _address.street   = "Musterstraße";
+    _address.number   = 1;
+    _address.postcode = "12345";
+    _address.city     = "Musterstadt";
+    _address.country  = "Deutschland";
+}
+
 void Customer::setAddress(string street, uint number, string postcode, string city, string country) {
     if (ranges::find_if_not(postcode, isdigit) != postcode.end()) {
         throw letter_in_number(ERRORMSG);

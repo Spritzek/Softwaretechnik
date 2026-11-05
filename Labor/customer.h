@@ -11,6 +11,7 @@ private:
     Address         _address;
     unsigned int    _id;
 public:
+    void init() override;
     /*
      * Hinweis: address() und id() sind const, damit sie in print() über
      * den const Customer* aus dem dynamic_cast aufgerufen werden können.

@@ -44,11 +44,10 @@ int main()
             "Bloggs"            // surname
         );
         aPerson.setDob(
-            37,     // day
+            17,     // day
             JUL,    // month
             1988    // year
         );
-
         aPerson.setAddress(
             "Hauptstraße",      // street
             21,                 // number

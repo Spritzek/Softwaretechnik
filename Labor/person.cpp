@@ -8,6 +8,14 @@
 #define TEST "ERROR"
 using namespace std;
 
+void Person::init() {
+    _name       = "Max";
+    _surname    = "Mustermann";
+    _dob.day    = 1;
+    _dob.month  = JAN;
+    _dob.year   = 2000;
+}
+
 void Person::setName(string name) {
     _name = name;
     if (ranges::find_if(_name, isdigit) != _name.end()) {

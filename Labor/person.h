@@ -28,6 +28,8 @@ public:
      * Die Setter bleiben ohne const, da sie das Objekt verändern.
      */
 
+    virtual void init();
+
     //Funktion zum Setzen des Vornamens
     void setName(string name);
 
