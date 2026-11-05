@@ -57,26 +57,26 @@ int main()
         );
     }
     // Vor- oder Nachname enthalt Ziffer
-    catch (digit_in_name& dex) {
-        cout<<dex.what()<<endl;
+    catch (digit_in_name& ex) {
+        cout<<ex.what()<<endl;
         cout<<"Name contains a digit"<<endl;
         return 1;
     }
     // Datum nicht existent
-    catch (date_non_existent& daex) {
-        cout<<daex.what()<<endl;
+    catch (date_non_existent& ex) {
+        cout<<ex.what()<<endl;
         cout<<"No such day"<<endl;
         return 1;
     }
     // Adresswort enthält Ziffer
-    catch (digit_in_word& dwe) {
-        cout<<dwe.what()<<endl;
+    catch (digit_in_word& ex) {
+        cout<<ex.what()<<endl;
         cout<<"Part of address contains digit"<<endl;
         return 1;
     }
     // Postleitzahl ist zu lang oder zu kurz
-    catch (postcode_length_error& le) {
-        cout<<le.what()<<endl;
+    catch (postcode_length_error& ex) {
+        cout<<ex.what()<<endl;
         cout<<"Postcode has wrong number of digits"<<endl;
         return 1;
     }
@@ -87,8 +87,8 @@ int main()
         return 1;
     }
     // dann alle anderen
-    catch (exception& e) {
-        cout<<e.what()<<endl;
+    catch (exception& ex) {
+        cout<<ex.what()<<endl;
         return 1;
     }
 
