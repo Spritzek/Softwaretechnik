@@ -2,6 +2,7 @@
 // global includes
 #include <iostream>
 #include <string>
+#include "exceptions.h"
 
 // local includes
 #include "customer.h"
@@ -35,8 +36,15 @@ int main()
      * catch-Block ausgeführt und das Programm beendet.
      */
     try {
+        // set person's details
+        aPerson.setName(
+            "Joe"               // name
+        );
+        aPerson.setSurname(
+            "Bloggs"            // surname
+        );
         aPerson.setDob(
-            17,     // day
+            37,     // day
             JUL,    // month
             1988    // year
         );
@@ -49,26 +57,41 @@ int main()
             "Deutschland"       // country
         );
     }
-
-    catch (length_error& le) {
+    // Vor- oder Nachname enthalt Ziffer
+    catch (digit_in_name& dex) {
+        cout<<dex.what()<<endl;
+        cout<<"Name contains a digit"<<endl;
+        return 1;
+    }
+    // Datum nicht existent
+    catch (date_non_existent& daex) {
+        cout<<daex.what()<<endl;
+        cout<<"No such day"<<endl;
+        return 1;
+    }
+    // Adresswort enthält Ziffer
+    catch (digit_in_word& dwe) {
+        cout<<dwe.what()<<endl;
+        cout<<"Part of address contains digit"<<endl;
+        return 1;
+    }
+    // Postleitzahl ist zu lang oder zu kurz
+    catch (postcode_length_error& le) {
         cout<<le.what()<<endl;
-        cout<<"postcode has wrong number of digits"<<endl;
+        cout<<"Postcode has wrong number of digits"<<endl;
         return 1;
     }
-
-    catch (exception& ex) {
+    // Postleitzahl enthält Buchstabe
+    catch (letter_in_number& ex) {
         cout<<ex.what()<<endl;
-        cout<<"no such day"<<endl;
+        cout<<"Postcode contains a letter"<<endl;
         return 1;
     }
-
-    // set person's details
-    aPerson.setName(
-        "Joe"               // name
-    );
-    aPerson.setSurname(
-        "Bloggs"            // surname
-    );
+    // dann alle anderen
+    catch (exception& e) {
+        cout<<e.what()<<endl;
+        return 1;
+    }
 
     print(aPerson);
     return 0;
