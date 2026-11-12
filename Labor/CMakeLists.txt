@@ -9,4 +9,6 @@ add_executable(Labor_01 main.cpp
         person.h
         customer.cpp
         customer.h
-        exceptions.h)
+        exceptions.h
+        vcustomer.cpp
+        vcustomer.h)
