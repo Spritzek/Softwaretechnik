@@ -11,4 +11,5 @@ add_executable(Labor_01 main.cpp
         customer.h
         exceptions.h
         vcustomer.cpp
-        vcustomer.h)
+        vcustomer.h
+)

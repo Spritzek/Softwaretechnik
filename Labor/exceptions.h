@@ -1,4 +1,5 @@
 #pragma once
+#include <stdexcept>
 using namespace std;
 
 class digit_in_name : public invalid_argument {

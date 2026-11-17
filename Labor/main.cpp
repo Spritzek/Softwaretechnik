@@ -1,137 +1,66 @@
 
-// global includes
-#include <iostream>
-#include <string>
-#include "exceptions.h"
-
-// local includes
-#include "customer.h"
-#include "defs.h"
-//#include "lib.h"
-using namespace std;
+// includes
+#include <iostream>     // global
+#include "customer.h"   // local
+#include "defs.h"       // local
+#include "vcustomer.h"  // local
 
 // prototypes
-void print(const Person& p);
-/*
- * const: print() darf Objekt nur lesen. D.h. die Getter
- * müssen als Const deklariert sein, um sicherzustellen,
- * dass sich die Werte beim Lesen nicht ändern.
- *
- * Person: Parametertyp Person, da Customer von Person
- * erbt und sowieso die selben Parameter wie Person besitzt.
- *
- * &: Der Funktion wird nur eine Referenz übergeben. Das
- * stellt die Funktion von dynamic_cast sicher.
- */
+static void print(const Customer* p);
 
-int main()
-{
-    // local variables
-    Customer aPerson;
+int main() {
 
     /*
-     * Try-Catch-Block:
-     * Sollte ein invalides Datum vorliegen erhebt die methode
-     * setDob eine Exception. Passiert das, wird der code im
-     * catch-Block ausgeführt und das Programm beendet.
+     * In diesem Labor stellt die main() Methode den Client dar.
+     * Der Client soll die Methoden des Servers aufrufen und
+     * der Server soll die Aufrufe mithilfe des Contract-Checkers
+     * überprüfen.
      */
-    try {
-        // set person's details
-        aPerson.setName(
-            "Joe"               // name
-        );
-        aPerson.setSurname(
-            "Bloggs"            // surname
-        );
-        aPerson.setDob(
-            17,     // day
-            JUL,    // month
-            1988    // year
-        );
-        aPerson.setAddress(
-            "Hauptstraße",      // street
-            21,                 // number
-            "45220",            // postcode
-            "Klein Bollersen",  // city
-            "Deutschland"       // country
-        );
-    }
-    // Vor- oder Nachname enthalt Ziffer
-    catch (digit_in_name& ex) {
-        cout<<ex.what()<<endl;
-        cout<<"Name contains a digit"<<endl;
-        return 1;
-    }
-    // Datum nicht existent
-    catch (date_non_existent& ex) {
-        cout<<ex.what()<<endl;
-        cout<<"No such day"<<endl;
-        return 1;
-    }
-    // Adresswort enthält Ziffer
-    catch (digit_in_word& ex) {
-        cout<<ex.what()<<endl;
-        cout<<"Part of address contains digit"<<endl;
-        return 1;
-    }
-    // Postleitzahl ist zu lang oder zu kurz
-    catch (postcode_length_error& ex) {
-        cout<<ex.what()<<endl;
-        cout<<"Postcode has wrong number of digits"<<endl;
-        return 1;
-    }
-    // Postleitzahl enthält Buchstabe
-    catch (letter_in_number& ex) {
-        cout<<ex.what()<<endl;
-        cout<<"Postcode contains a letter"<<endl;
-        return 1;
-    }
-    // dann alle anderen
-    catch (exception& ex) {
-        cout<<ex.what()<<endl;
-        return 1;
-    }
+
+    Customer* aPerson = new VCustomer();
+
+    aPerson->setName("Joe");
+    aPerson->setSurname("Bloggs");
+    aPerson->setDob(12, JUL, 1988);
+    aPerson->setAddress(
+        "Hauptstraße",      // street
+        21,                   // number
+        "45220",            // postcode
+        "Klein Bollersen",  // city
+        "Deutschland"       // country
+    );
 
     print(aPerson);
+
+    // --- Speicher freigeben ---
+    delete aPerson;
+    // --------------------------
+
     return 0;
 }
 
-void print(const Person& p)
+/*
+ * Annahme für Labor_03:
+ * Es werden keine Objekte der Klasse Person übergeben!
+ */
+static void print(const Customer* p)
 {
-    // Teil, der für Person und Customer gilt
     // Name:
     cout << "Name: ";
-    cout << p.name()        << " ";
-    cout << p.surname()     << " ";
+    cout << p->name()        << " ";
+    cout << p->surname()     << " ";
+
     // Date of Birth:
     cout << "DoB: ";
-    cout << p.dob().day     << ".";
-    cout << p.dob().month   << ".";
-    cout << p.dob().year    << endl;
+    cout << p->dob().day     << ".";
+    cout << p->dob().month   << ".";
+    cout << p->dob().year    << endl;
 
-    // Teil nur für Customer
-    /*
-     * &p beschreibt die Adresse des Objekts p
-     * dynamic_cast: Laufzeitprüfung ob Objekt bei Adresse &p ein Customer
-     * oder eine davon abgeleitete Klasse vorliegt
-     * wenn der Cast gelingt (es liegt ein Customer Objekt vor), dann
-     * wird c ein Pointer zugewiesen zum Objekt.
-     * das wird von if als True interpretiert.
-     * Andernfalls wird c ein NULL-Pointer zugewiesen.
-     * Das wird von if als False interpretiert.
-     */
-    if (const Customer* c = dynamic_cast<const Customer*>(&p))
-    {
-        /*
-         * Da c nur ein Pointer ist muss über "c->" angegeben
-         * werden, dass das Objekt gemeint ist, auf welches
-         * c zeigt.
-         */
-        cout << "Address: ";
-        cout << c->address().street     << " ";
-        cout << c->address().number     << ", ";
-        cout << c->address().postcode   << " ";
-        cout << c->address().city       << ", ";
-        cout << c->address().country    << endl;
-    }
+    // Address:
+    cout << "Address: ";
+    cout << p->address().street     << " ";
+    cout << p->address().number     << ", ";
+    cout << p->address().postcode   << " ";
+    cout << p->address().city       << ", ";
+    cout << p->address().country    << endl;
 }
